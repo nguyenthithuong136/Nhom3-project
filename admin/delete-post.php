@@ -7,7 +7,7 @@ include('controllers/c_post.php');
 if (isset($_SESSION['admin_id'])) {
     if ($_SESSION['admin_role'] == 1  ) {
         $index = new c_post();
-        $index->delete_product();
+        $index->delete_post();
     } else {
         header('location: index.php');
     }
