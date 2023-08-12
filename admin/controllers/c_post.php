@@ -136,37 +136,22 @@ class c_post
         $view = './views/v_edit-post.php';
         include('templates/admin/layout.php');
     }
-    // public function delete_post()
-    // {   
-      
-    //     $delete_product = new m_post();
-    //     if (isset($_GET['id'])) {
-    //         $id =  $_GET['id'];
-            // $product_id = $delete_product->get_post_by_id($id);
-//             $result = $delete_product->delete_post_with_category($id);
-//             if ($result) {
-//                 header('location: post.php?success=Xóa bài đăng thành công thành công!');
-//             } else {
-//                 header('location: post.php?success=Xóa bài đăng thất bại!');
-//             }
-//         }
-//     }
-// }
-public function delete_product()
- {   
-
-    $delete_product = new m_post();
-    if (isset($_GET['id'])) {
-        $id =  $_GET['id'];
-        $product_id = $delete_product->get_post_by_id($id);
-        $result = $delete_product->delete_product($id);
-        if ($result) {
-            echo "<script>alert('thành công')</script>";
-            header('location: post.php');
-        } else {
-            echo "<script>alert('thất bại')</script>";
-            header('location: post.php');
-        }
-    }
-}
+  
+    public function delete_post()
+    {   
+   
+       $delete_post = new m_post();
+       if (isset($_GET['id'])) {
+           $id =  $_GET['id'];
+           // $product_id = $delete_product->get_post_by_id($id);
+           $result = $delete_post->delete_post_with_category($id);
+           if ($result) {
+               echo "<script>alert('thành công')</script>";
+               header('location: post.php');
+           } else {
+               echo "<script>alert('thất bại')</script>";
+               header('location: post.php');
+           }
+       }
+   }
 }
