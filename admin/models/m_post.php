@@ -62,12 +62,7 @@ class m_post extends database {
         return $this->loadAllRows();
     }
     
-    // public function get_all_post_category() {
-    //     $sql = "select * from product
-    //         join category on category.id = product.id_category";
-    //     $this->setQuery($sql);
-    //     return $this->loadAllRows();
-    // }
+   
 
     //thêm bài đăng
     public function add_post_with_category($name, $detail, $image, $categoryId) {
@@ -125,28 +120,17 @@ class m_post extends database {
     
    
     // xóa bài đăng
-    public function delete_product($id){
-        $sql = "delete from posts where id = ?";
+    public function delete_post_with_category($post_id) {
+        $this->delete_post_category_relation($post_id); // Xoá liên kết với thể loại trước
+        $sql = "DELETE FROM posts WHERE id = ?";
         $this->setQuery($sql);
-        return $this->execute(array($id));
-    } 
-    // public function delete_post_with_category($post_id) {
-    // $this->delete_post_category_relation($id); // Xoá liên kết với thể loại trước
-//     $sql = "DELETE FROM posts WHERE id = ?";
-//     $this->setQuery($sql);
-//     return $this->execute(array($post_id));
-// }
-
-// public function delete_post_category_relation($postId) {
-//     $sql = "DELETE FROM post_category WHERE post_id = ?";
-//     $this->setQuery($sql);
-//     return $this->execute(array($postId));
-// }
-
-    // public function delete_post($id){
-    //     $sql = "delete from posts where id = ?";
-    //     $this->setQuery($sql);
-    //     return $this->execute(array($id));
-    // } 
+        return $this->execute(array($post_id));
+    }
+    
+    public function delete_post_category_relation($postId) {
+        $sql = "DELETE FROM post_category WHERE post_id = ?";
+        $this->setQuery($sql);
+        return $this->execute(array($postId));
+    }
 }
 ?>
